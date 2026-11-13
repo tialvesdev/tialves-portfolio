@@ -2,6 +2,8 @@ package dev.tiago.portfolio;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -15,6 +17,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import dev.tiago.portfolio.service.ContactDeliveryException;
+import dev.tiago.portfolio.service.ContactNotifier;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -22,6 +28,9 @@ class PortfolioApiTest {
 
     @Autowired
     MockMvc mvc;
+
+    @MockBean
+    ContactNotifier notifier;
 
     @Test
     void profileHasNameAndRole() throws Exception {
@@ -82,6 +91,19 @@ class PortfolioApiTest {
                 .andExpect(jsonPath("$.errors.name").isNotEmpty())
                 .andExpect(jsonPath("$.errors.email", is("Informe um e-mail válido.")))
                 .andExpect(jsonPath("$.errors.message").isNotEmpty());
+    }
+
+    @Test
+    void failedEmailDeliveryIs502() throws Exception {
+        doThrow(new ContactDeliveryException("Não foi possível enviar a mensagem agora.", null))
+                .when(notifier).deliver(any());
+        mvc.perform(post("/api/contact")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"name":"Ada","email":"ada@example.com","message":"Olá, gostei do portfólio!"}
+                                """))
+                .andExpect(status().isBadGateway())
+                .andExpect(jsonPath("$.title", is("Envio indisponível")));
     }
 
     @Test

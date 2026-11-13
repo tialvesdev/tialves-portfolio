@@ -10,9 +10,12 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import dev.tiago.portfolio.service.ContactDeliveryException;
 
 /**
  * Erros de validação viram ProblemDetail (RFC 9457) com um mapa "errors" campo → mensagem,
@@ -32,5 +35,13 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         pd.setTitle("Dados inválidos");
         pd.setProperty("errors", errors);
         return ResponseEntity.badRequest().body(pd);
+    }
+
+    /** A mensagem chegou, mas o e-mail não saiu: 502 para o formulário pedir que a pessoa tente de novo. */
+    @ExceptionHandler(ContactDeliveryException.class)
+    ProblemDetail handleDelivery(ContactDeliveryException ex) {
+        ProblemDetail pd = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_GATEWAY, ex.getMessage());
+        pd.setTitle("Envio indisponível");
+        return pd;
     }
 }

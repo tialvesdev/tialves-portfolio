@@ -17,8 +17,8 @@ import dev.tiago.portfolio.model.ContactReceipt;
 import dev.tiago.portfolio.model.ContactRequest;
 
 /**
- * Guarda as mensagens de contato em memória (as mais recentes primeiro).
- * Em produção, troque por um repositório ou por envio de e-mail (spring-boot-starter-mail).
+ * Recebe as mensagens do formulário de contato: guarda as mais recentes em memória e
+ * entrega cada uma pelo {@link ContactNotifier} (e-mail via Resend em produção).
  */
 @Service
 public class ContactService {
@@ -31,25 +31,30 @@ public class ContactService {
     private final Deque<StoredMessage> inbox = new ArrayDeque<>();
     private final int maxStored;
     private final Clock clock;
+    private final ContactNotifier notifier;
 
     @Autowired
-    public ContactService(PortfolioProperties props) {
-        this(props, Clock.systemUTC());
+    public ContactService(PortfolioProperties props, ContactNotifier notifier) {
+        this(props, notifier, Clock.systemUTC());
     }
 
-    ContactService(PortfolioProperties props, Clock clock) {
+    ContactService(PortfolioProperties props, ContactNotifier notifier, Clock clock) {
         this.maxStored = Math.max(1, props.contact().maxStored());
+        this.notifier = notifier;
         this.clock = clock;
     }
 
-    public synchronized ContactReceipt receive(ContactRequest request) {
+    public ContactReceipt receive(ContactRequest request) {
         var msg = new StoredMessage(UUID.randomUUID().toString(), Instant.now(clock), request);
-        inbox.addFirst(msg);
-        while (inbox.size() > maxStored) {
-            inbox.removeLast();
+        synchronized (this) {
+            inbox.addFirst(msg);
+            while (inbox.size() > maxStored) {
+                inbox.removeLast();
+            }
         }
         // Não registra o conteúdo nem o e-mail: só o suficiente para saber que chegou.
         log.info("Nova mensagem de contato {} ({} caracteres)", msg.id(), request.message().length());
+        notifier.deliver(msg);
         return new ContactReceipt(msg.id(), msg.receivedAt());
     }
 

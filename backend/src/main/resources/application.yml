@@ -1,5 +1,6 @@
 server:
-  port: 8080
+  # O Render (e outras hospedagens) informa a porta pela variável PORT.
+  port: ${PORT:8080}
 
 spring:
   application:
@@ -12,10 +13,15 @@ spring:
 
 portfolio:
   cors:
-    # Origens do front-end. Em produção, troque pelo domínio do seu portfólio.
-    allowed-origins:
-      - http://localhost:5173
-      - http://127.0.0.1:5173
+    # Origens do front-end, separadas por vírgula. Em produção: CORS_ALLOWED_ORIGINS=https://seu-dominio
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
   contact:
-    # Quantas mensagens manter em memória (substitua por banco/e-mail em produção).
+    # Quantas mensagens recentes manter em memória.
     max-stored: 200
+  mail:
+    # Sem chave, as mensagens só ficam no log. A chave vem do ambiente, nunca do repositório.
+    resend-api-key: ${RESEND_API_KEY:}
+    to: ${CONTACT_TO:tialves.dev@gmail.com}
+    # O remetente de teste do Resend só entrega para o e-mail dono da conta. Com domínio verificado,
+    # troque por algo como "Portfólio <contato@seu-dominio>".
+    from: ${CONTACT_FROM:Portfólio do Tiago <onboarding@resend.dev>}
