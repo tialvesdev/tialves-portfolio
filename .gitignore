@@ -1,0 +1,10 @@
+node_modules/
+dist/
+target/
+*.log
+.env
+.env.local
+frontend/public/_prev/
+frontend/tsconfig.tsbuildinfo
+.DS_Store
+.claude/
