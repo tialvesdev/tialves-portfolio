@@ -38,6 +38,14 @@ export function usePortfolio(): PortfolioData {
   return data;
 }
 
+/**
+ * Acorda a API em segundo plano. No plano gratuito do Render ela dorme depois de um tempo parada;
+ * com esse aviso no início da visita, ela já está de pé quando a pessoa chega ao formulário.
+ */
+export function wakeApi(): void {
+  fetch(`${API}/profile`, { headers: { Accept: 'application/json' } }).catch(() => undefined);
+}
+
 export class ContactError extends Error {
   constructor(
     message: string,
@@ -56,10 +64,10 @@ export async function sendContact(body: ContactRequest): Promise<ContactReceipt>
       body: JSON.stringify(body),
     });
   } catch {
-    throw new ContactError('Não foi possível falar com o servidor. Tente de novo em instantes.');
+    throw new ContactError('O cristal não respondeu agora. Tente de novo em instantes ou escreva para tialves.dev@gmail.com.');
   }
   if (res.ok) return res.json() as Promise<ContactReceipt>;
   const problem = (await res.json().catch(() => ({}))) as ApiProblem;
   if (res.status === 400) throw new ContactError(problem.detail ?? 'Confira os campos destacados.', problem.errors ?? {});
-  throw new ContactError('O servidor está indisponível. Inicie o backend Spring Boot e tente de novo.');
+  throw new ContactError('O cristal não conseguiu enviar a mensagem. Tente de novo em instantes ou escreva para tialves.dev@gmail.com.');
 }

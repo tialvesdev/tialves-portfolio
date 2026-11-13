@@ -1,0 +1,318 @@
+.px,.px img{image-rendering:pixelated}
+.plate{position:absolute;left:20px;bottom:18px;z-index:7;box-sizing:border-box;border-style:solid;border-width:12px;border-image:url(/assets/castelo/1b7efee7399615f55bc753f7cc4ba47f.png) 8 / 12px round;background:rgba(20,4,8,.94);padding:2px 18px;display:flex;flex-direction:column;align-items:flex-start;image-rendering:pixelated}
+.plate:focus-visible{outline:2px solid #3ec8d4;outline-offset:3px}
+.cell{min-height:40px;padding:0 9px;box-sizing:border-box;border:2px solid #3a2a10;background:#0c0a10;font:13px Silkscreen,monospace;color:#f6dc8c;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.jump{position:absolute;left:12px;top:12px;z-index:30;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.jump:focus-within{width:auto;height:auto;overflow:visible;clip-path:none;display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px;background:rgba(7,6,11,.94);border:2px solid #8a5c14}
+.stage{position:absolute;inset:0;overflow:hidden;background:#000000}
+.vig{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse 80% 70% at 50% 45%,transparent 55%,rgba(0,0,0,.55))}
+.glow{position:absolute;z-index:1;pointer-events:none;border-radius:50%;mix-blend-mode:screen;animation:glow-flicker 6s steps(3) infinite alternate}
+@keyframes glow-flicker{from{opacity:.5}to{opacity:1}}
+.twinkle{position:absolute;z-index:1;width:6px;height:6px;pointer-events:none;background:linear-gradient(#ffffff,#ffffff) center/2px 6px no-repeat,linear-gradient(#ffffff,#ffffff) center/6px 2px no-repeat;animation:twinkle 2.2s steps(3) infinite}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:1}}
+.amb-bat{position:absolute;z-index:2;top:70px;left:-120px;width:48px;height:32px;padding:0;border:0;cursor:crosshair;opacity:.85;background:url(/assets/castelo/d992aaf2ee8aa59affb97d55e3e0b1cf.png) 0 0/384px 32px;image-rendering:pixelated}
+.ab1.g0{animation:bat-flap-s .57s steps(8) infinite,amb-fly 11s linear infinite}
+.ab1.g1{animation:bat-flap-s .57s steps(8) infinite,amb-fly-b 11s linear infinite}
+.ab2.g0{animation:bat-flap-s .5s steps(8) infinite,amb-fly2 14s linear -6s infinite}
+.ab2.g1{animation:bat-flap-s .5s steps(8) infinite,amb-fly2-b 14s linear infinite}
+.amb-bat.dead{visibility:hidden;pointer-events:none}
+.bonus{position:absolute;right:16px;top:16px;z-index:7;font:13px Silkscreen,monospace;letter-spacing:.04em;color:#f6dc8c;background:rgba(7,6,11,.85);border:2px solid #8a5c14;padding:4px 8px}
+@keyframes bat-flap-s{to{background-position:-384px 0}}
+@keyframes amb-fly{0%{left:-120px;top:90px}50%{top:42px}100%{left:1560px;top:108px}}
+@keyframes amb-fly-b{0%{left:-120px;top:90px}50%{top:42px}100%{left:1560px;top:108px}}
+@keyframes amb-fly2{0%{left:-120px;top:236px}50%{top:170px}100%{left:1560px;top:256px}}
+@keyframes amb-fly2-b{0%{left:-120px;top:236px}50%{top:170px}100%{left:1560px;top:256px}}
+.rays{position:absolute;left:470px;top:0;width:500px;height:760px;z-index:1;pointer-events:none;mix-blend-mode:screen;clip-path:polygon(32% 0,68% 0,100% 100%,0 100%);background:linear-gradient(90deg,rgba(62,200,212,.18),rgba(196,32,50,.14),rgba(232,176,56,.18),rgba(132,82,184,.16));opacity:.8}
+.pn{position:absolute;box-sizing:border-box;border-style:solid;border-width:16px;border-image-slice:8;border-image-width:16px;border-image-repeat:round;background:rgba(10,8,14,.9);padding:12px 18px;z-index:3;image-rendering:pixelated;color:#d8cfbb}
+.pn-fil{border-image-source:url(/assets/castelo/a7790314ce5fa4279f33a48725d1ca66.png)}
+.pn-car{border-image-source:url(/assets/castelo/1b7efee7399615f55bc753f7cc4ba47f.png);background:rgba(20,4,8,.92)}
+.pn-got{border-image-source:url(/assets/castelo/6c131f06bc528119262369a4f88f5387.png)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:0 10px;box-sizing:border-box;border-style:solid;border-width:18px;border-image:url(/assets/castelo/e2c53bf1730516574a1d1e885f9a0b29.png) 6 fill / 18px stretch;font:13px/18px Silkscreen,monospace;letter-spacing:.04em;color:#f6dc8c;text-decoration:none;text-shadow:0 2px 0 #12040a;image-rendering:pixelated;background:none;cursor:pointer}
+.btn-p{border-image-source:url(/assets/castelo/1d131dd99c3d5787fae8259dd81c1845.png);color:#d4fff6}
+.btn:active{border-image-source:url(/assets/castelo/29c6382b1b3d558bdfb50ac9e935f982.png)}
+.btn:focus-visible,.cell:focus-visible,.x-btn:focus-visible,a:focus-visible,.bat:focus-visible,.pad:focus-visible,.gate:focus-visible,.pane:focus-visible,.spot:focus-visible,.pframe:focus-visible{outline:2px solid #3ec8d4;outline-offset:3px}
+[tabindex]:focus-visible{outline:2px solid #3ec8d4;outline-offset:-4px}
+.chip{display:inline-flex;align-items:center;height:42px;box-sizing:border-box;border-style:solid;border-width:15px 15px 15px 24px;border-image:url(/assets/castelo/0a3b5523ec81145eb760ff7733956d33.png) 5 5 5 8 fill / 15px 15px 15px 24px stretch;font:13px/12px Silkscreen,monospace;color:#ece2cc;white-space:nowrap;image-rendering:pixelated}
+.lbl{font:13px Silkscreen,monospace;letter-spacing:.08em;color:#cbb98f;text-transform:uppercase}
+/* personagem: desloca em linha reta, salta em degraus, some e reaparece em linhas de varredura */
+.hero{position:absolute;width:96px;height:160px;z-index:5;pointer-events:none;background:url(/assets/castelo/dff0067b2c3da384d80eb538c45cdd73.png) 0 0/96px 160px;image-rendering:pixelated;filter:drop-shadow(0 3px 0 rgba(0,0,0,.45))}
+.hero.walking{background-image:url(/assets/castelo/d4116e62c613798d8bee992e485cb4c0.png);background-size:576px 160px;animation:hero-walk .6s steps(6) infinite}
+.hero.left{transform:scaleX(-1)}
+.hero.moving{transition:left .75s linear,top .42s steps(7)}
+.hero.enter{transform:scale(.42);transform-origin:50% 100%;transition:top .5s steps(6),transform .5s steps(6)}
+.hero.enter.dissolve{animation-duration:.35s}
+.hero.exit{transform-origin:50% 100%;transition:top .5s steps(6),transform .5s steps(6)}
+.hero.dissolve{animation:hero-out .6s steps(8) forwards}
+.door{position:absolute;left:1089px;top:522px;width:75px;height:81px;z-index:1;pointer-events:none;background:url(/assets/castelo/f03f5b5a5a7a90f9d4749a5870a16bfc.png) 0 0/300px 81px;image-rendering:pixelated}
+.door.opening{animation:door-open .35s steps(3) forwards}
+.door.open{background-position:-225px 0}
+.door.closing{animation:door-close .35s steps(3) forwards}
+@keyframes door-open{to{background-position:-225px 0}}
+@keyframes door-close{from{background-position:-225px 0}to{background-position:0 0}}
+.door-glow{position:absolute;left:1005px;top:470px;width:240px;height:240px;z-index:1;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(circle,rgba(255,210,112,.5),rgba(255,170,60,.18) 40%,transparent 66%);animation:glow-flicker .5s steps(3) infinite alternate}
+.hero.materialize{animation:hero-in .6s steps(8) both}
+.hero.gone{visibility:hidden}
+.hero.attack{animation:hero-attack .3s steps(2)}
+@keyframes hero-walk{to{background-position:-576px 0}}
+@keyframes hero-out{0%{clip-path:inset(0 0 0 0);filter:brightness(1)}25%{filter:brightness(3)}50%{filter:brightness(1)}75%{filter:brightness(3)}100%{clip-path:inset(0 0 100% 0);filter:brightness(3)}}
+@keyframes hero-in{0%{clip-path:inset(100% 0 0 0);filter:brightness(3)}50%{filter:brightness(1)}75%{filter:brightness(3)}100%{clip-path:inset(0 0 0 0);filter:brightness(1)}}
+@keyframes hero-attack{from{filter:brightness(2.6)}to{filter:brightness(1)}}
+.fireball{position:absolute;z-index:6;width:48px;height:48px;margin:-24px 0 0 -24px;pointer-events:none;background:url(/assets/castelo/5aa30972381a9a62fe08a42fdb50ecc1.png) 0 0/192px 48px;image-rendering:pixelated;animation:fire-anim .24s steps(4) infinite}
+.ember{position:absolute;z-index:6;pointer-events:none;width:12px;height:12px;margin:-6px 0 0 -6px;background:#ff8a1e;box-shadow:0 0 0 3px #8a140c}
+.ember.e2{width:6px;height:6px;margin:-3px 0 0 -3px;background:#ffd23a;box-shadow:0 0 0 3px #d8321a}
+@keyframes fire-anim{to{background-position:-192px 0}}
+.burst{position:absolute;z-index:6;width:72px;height:72px;margin:-36px 0 0 -36px;pointer-events:none;background:url(/assets/castelo/0bb5ca38a85a5cc65ca8d9fe77eb98d3.png) 0 0/432px 72px;image-rendering:pixelated;animation:burst-anim .5s steps(6) forwards}
+@keyframes burst-anim{to{background-position:-432px 0}}
+.relic{position:absolute;left:864px;top:222px;width:192px;height:240px;z-index:2;pointer-events:none;background:url(/assets/castelo/e20d07a1ee5fa8f309c3061f0584c48c.png) 0 0/3072px 240px;image-rendering:pixelated;animation:relic-spin 1.6s steps(16) infinite}
+.relic.pulse{filter:brightness(1.8)}
+@keyframes relic-spin{to{background-position:-3072px 0}}
+.spot{position:absolute;z-index:4;padding:0;border:2px dashed transparent;background:none;cursor:pointer}
+.spot:focus-visible{border-color:#3ec8d4}
+.spark{position:absolute;right:-10px;top:-10px;width:33px;height:33px;background:url(/assets/castelo/46936ee1a254f812e1aab39fcad17171.png) 0 0/198px 33px;image-rendering:pixelated;animation:spark .6s steps(6) infinite;pointer-events:none}
+@keyframes spark{to{background-position:-198px 0}}
+.tag{position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);white-space:nowrap;font:13px Silkscreen,monospace;letter-spacing:.04em;color:#f6dc8c;background:rgba(7,6,11,.9);border:2px solid #8a5c14;padding:4px 8px}
+.title-float{position:absolute;z-index:3;display:flex;flex-direction:column;gap:12px}
+.title-float::before{content:'';position:absolute;inset:-70px -110px -70px -64px;z-index:-1;background:radial-gradient(ellipse at 38% 50%,rgba(6,3,14,.9),rgba(6,3,14,.62) 48%,transparent 74%)}
+.kicker{display:flex;align-items:center;gap:12px;font:13px Silkscreen,monospace;letter-spacing:.14em;color:#f6dc8c;text-transform:uppercase}
+.kicker::before,.kicker::after{content:'';width:28px;height:3px;background:#8a5c14;box-shadow:0 -3px 0 #e8b038}
+.title-name{margin:0;font:400 96px/.9 'Jacquard 24',Silkscreen,monospace;letter-spacing:.02em;color:#f6dc8c;background:linear-gradient(#fff6d6 0 38%,#f2c35a 38% 64%,#c88a24 64% 82%,#9a5e16 82%) 0 0/100% .9em repeat-y;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 3px 0 #5a2e0c) drop-shadow(0 3px 0 #1a0806) drop-shadow(0 0 14px rgba(232,176,56,.28))}
+.title-name > span{display:block}
+.title-name .cap{font-size:1em}
+.capg{display:inline-block;height:.9em;vertical-align:top;margin-right:.02em;overflow:visible}
+.title-desc{margin:0;max-width:580px;font:400 25px/1.45 'Pixelify Sans',Silkscreen,monospace;color:#ece2cc;text-shadow:0 2px 0 #000000}
+.title-desc b{font-weight:600;color:#f6dc8c}
+.kw{font-weight:600;color:#ffe6a0}
+.icon-btn{width:54px;height:54px;flex:none;display:inline-flex;align-items:center;justify-content:center;padding:0;box-sizing:border-box;border-style:solid;border-width:18px;border-image:url(/assets/castelo/e2c53bf1730516574a1d1e885f9a0b29.png) 6 fill / 18px stretch;background:none;cursor:pointer;image-rendering:pixelated}
+.icon-btn svg{flex:none}
+.status{display:inline-flex;align-items:center;gap:10px;font:13px Silkscreen,monospace;letter-spacing:.06em;color:#bff0c8;text-transform:uppercase}
+.status i{width:9px;height:9px;background:#5adc7a;box-shadow:0 0 0 3px rgba(90,220,122,.25);animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:.25}}
+.channels{display:flex;flex-direction:column;gap:10px}
+.channel{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:14px;min-height:72px;padding:8px 16px 8px 8px;box-sizing:border-box;border:3px solid #5a3a14;background:rgba(7,6,11,.86);color:#ece6d4;text-decoration:none}
+.ch-icon{width:60px;height:54px;display:flex;align-items:center;justify-content:center;background:#140c1c;box-shadow:inset 0 0 0 2px var(--chc)}
+.ch-k{display:block;font:13px Silkscreen,monospace;letter-spacing:.06em;color:var(--chc);text-transform:uppercase}
+.ch-v{display:block;font:600 19px/1.25 'Pixelify Sans',Silkscreen,monospace;color:#ffffff;overflow-wrap:anywhere}
+.ch-go{font:13px Silkscreen,monospace;color:var(--chc)}
+.ch-mail{--chc:#f6dc8c}
+.ch-in{--chc:#7fdde6}
+.ch-gh{--chc:#c8a8f0}
+.ch-main{border-color:#e8b038;background:linear-gradient(90deg,rgba(232,176,56,.16),rgba(7,6,11,.9) 70%);animation:ch-glow 1.6s steps(2) infinite alternate}
+@keyframes ch-glow{from{box-shadow:0 0 0 3px #2c0a12,0 0 10px rgba(232,176,56,.2)}to{box-shadow:0 0 0 3px #2c0a12,0 0 26px rgba(232,176,56,.5)}}
+.channel:focus-visible{outline:2px solid #3ec8d4;outline-offset:3px}
+.facts{display:flex;gap:6px;flex-wrap:wrap}
+.fact{font:13px Silkscreen,monospace;letter-spacing:.02em;color:#f6dc8c;border:2px solid #8a5c14;background:rgba(232,176,56,.1);padding:6px 10px}
+/* estante: o livro sai da prateleira e fica aberto acima da cabeça, como item obtido */
+.book{position:absolute;z-index:6;pointer-events:none;image-rendering:pixelated;transition:left .5s steps(8),top .5s steps(8)}
+.book-sheet{position:absolute;z-index:6;width:96px;height:66px;pointer-events:none;background:url(/assets/castelo/95326581695f204c3faab3c331944428.png) 0 0/576px 66px;image-rendering:pixelated;animation:book-open .45s steps(3) forwards,book-flip 2.4s steps(1) 1s infinite}
+@keyframes book-open{to{background-position:-288px 0}}
+@keyframes book-flip{0%{background-position:-288px 0}62%{background-position:-384px 0}76%{background-position:-480px 0}90%{background-position:-288px 0}}
+.book-glint{position:absolute;z-index:7;width:33px;height:33px;pointer-events:none;background:url(/assets/castelo/128879d07d63804bad0cb75b635e5b6f.png) 0 0/198px 33px;image-rendering:pixelated;animation:spark .5s steps(6) infinite}
+/* diário: a pena pula em degraus de 3 px enquanto a tinta cresce em blocos */
+.quill{position:absolute;width:30px;height:54px;z-index:6;pointer-events:none;background:url(/assets/castelo/e8cc5432462ca1f30a36ddd7f9a55108.png) 0 0/60px 54px;image-rendering:pixelated;transition:left .4s steps(5),top .4s steps(5)}
+.quill.rest{clip-path:inset(0 0 6px 0)}
+.quill.lift{animation:quill-lift .3s steps(3) both}
+.quill.drop{animation:quill-lift .3s steps(3) reverse both}
+.quill.write{animation:quill-frames .3s steps(2) infinite,quill-path 1.2s steps(1) both}
+@keyframes quill-lift{from{transform:translateY(0)}to{transform:translateY(-27px)}}
+@keyframes quill-frames{to{background-position:-60px 0}}
+@keyframes quill-path{0%{transform:translate(0,-12px)}12%{transform:translate(0,0)}24%{transform:translate(9px,3px)}36%{transform:translate(18px,0)}48%{transform:translate(27px,3px)}60%{transform:translate(39px,0)}72%{transform:translate(48px,3px)}84%{transform:translate(60px,0)}100%{transform:translate(66px,-12px)}}
+.sketch{position:absolute;left:1046px;top:448px;width:128px;height:108px;z-index:5;pointer-events:none;shape-rendering:crispEdges}
+.sketch path,.sketch rect{fill:none;stroke:#3ec8d4;stroke-width:3;stroke-linecap:square;stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.4s steps(14) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.glint{position:absolute;z-index:5;width:33px;height:33px;pointer-events:none;background:url(/assets/castelo/128879d07d63804bad0cb75b635e5b6f.png) 0 0/198px 33px;image-rendering:pixelated;animation:spark .5s steps(6) infinite}
+/* biblioteca: chuva passando no vidro e relâmpago de vez em quando */
+.rain{position:absolute;left:639px;top:147px;width:336px;height:228px;z-index:1;pointer-events:none;background:url(/assets/castelo/4352759e4fc52e582dab0c6e2d9808e6.png) 0 0/2688px 228px;image-rendering:pixelated;animation:rain-fall .64s steps(8) infinite}
+@keyframes rain-fall{to{background-position:-2688px 0}}
+.lightning{position:absolute;left:639px;top:147px;width:336px;height:228px;z-index:1;pointer-events:none;background:url(/assets/castelo/d5ba7ba89c9ea0dd5b0aabb5370bd28a.png) 0 0/336px 228px;image-rendering:pixelated;mix-blend-mode:screen;opacity:0;animation:lightning 9s steps(1) infinite}
+.storm-flash{position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(150,170,255,.07);opacity:0;animation:lightning 9s steps(1) infinite}
+@keyframes lightning{0%,88%{opacity:0}89%{opacity:.6}90%{opacity:0}91.5%{opacity:.35}92.5%,100%{opacity:0}}
+/* torre: nuvens passando na frente da lua, luzes da cidade, lampião tremendo */
+.clouds{position:absolute;left:300px;top:66px;width:660px;height:168px;z-index:1;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000000 14%,#000000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000000 14%,#000000 86%,transparent)}
+.clouds span{position:absolute;inset:0;background:url(/assets/castelo/a5737ed0e5e5d57c95808e093bb41c17.png) 0 0/660px 168px repeat-x;image-rendering:pixelated;animation:cloud-drift 66s steps(220) infinite}
+@keyframes cloud-drift{to{background-position:-660px 0}}
+.clight{position:absolute;width:3px;height:3px;z-index:1;pointer-events:none;background:#f2a63f;animation:clight 9s steps(1) infinite}
+@keyframes clight{0%,38%{background:#f2a63f}39%,52%{background:var(--off)}53%,60%{background:#ffd890}61%,63%{background:var(--off)}64%,100%{background:#f2a63f}}
+.lamp-flick{position:absolute;left:189px;top:195px;width:120px;height:120px;z-index:1;pointer-events:none;border-radius:50%;mix-blend-mode:screen;background:radial-gradient(circle,rgba(110,235,245,.45),transparent 66%);animation:lamp-flick 2.6s steps(1) infinite}
+@keyframes lamp-flick{0%{opacity:.9}18%{opacity:.55}24%{opacity:1}52%{opacity:.7}58%{opacity:.25}62%{opacity:.95}84%{opacity:.6}}
+/* entrada: a lua reluz e morceguinhos rodam o castelo */
+.moon-glow{position:absolute;left:887px;top:-58px;width:460px;height:460px;z-index:1;pointer-events:none;border-radius:50%;mix-blend-mode:screen;background:radial-gradient(circle,rgba(255,246,214,.26) 0 30%,rgba(255,240,200,.16) 30% 40%,rgba(240,224,190,.08) 40% 52%,rgba(220,200,180,.04) 52% 66%,transparent 66%);animation:moon-pulse 3.2s steps(4) infinite alternate}
+@keyframes moon-pulse{from{opacity:.55;transform:scale(.94)}to{opacity:1;transform:scale(1.04)}}
+.moon-glint{position:absolute;z-index:2;width:9px;height:9px;pointer-events:none;background:linear-gradient(#fff8e0,#fff8e0) center/3px 9px no-repeat,linear-gradient(#fff8e0,#fff8e0) center/9px 3px no-repeat;opacity:0;animation:fglint 4.2s steps(1) infinite}
+.mini-bat{position:absolute;left:1086px;top:300px;z-index:1;width:30px;height:20px;pointer-events:none;background:url(/assets/castelo/d992aaf2ee8aa59affb97d55e3e0b1cf.png) 0 0/240px 20px;image-rendering:pixelated;opacity:.9;animation:mini-flap .45s steps(8) infinite,bat-orbit var(--t) linear infinite;animation-delay:0s,var(--d)}
+.mini-bat i{display:block}
+@keyframes mini-flap{to{background-position:-240px 0}}
+@keyframes bat-orbit{0%{transform:translate(var(--rx),0) scaleX(-1)}12.5%{transform:translate(calc(var(--rx) * .7),calc(var(--ry) * -.7)) scaleX(-1)}25%{transform:translate(0,calc(var(--ry) * -1)) scaleX(-1)}37.5%{transform:translate(calc(var(--rx) * -.7),calc(var(--ry) * -.7)) scaleX(-1)}49.9%{transform:translate(calc(var(--rx) * -1),0) scaleX(-1)}50%{transform:translate(calc(var(--rx) * -1),0)}62.5%{transform:translate(calc(var(--rx) * -.7),calc(var(--ry) * .7))}75%{transform:translate(0,var(--ry))}87.5%{transform:translate(calc(var(--rx) * .7),calc(var(--ry) * .7))}99.9%{transform:translate(var(--rx),0)}100%{transform:translate(var(--rx),0) scaleX(-1)}}
+/* halos: todo poste, tocha, vela e candelabro tem luz própria, em anéis de pixel */
+.halo{position:absolute;z-index:1;pointer-events:none;border-radius:50%;mix-blend-mode:screen;background:radial-gradient(circle,var(--c) 0 16%,var(--c2) 16% 36%,var(--c3) 36% 62%,transparent 62%);animation:halo-flick 1.9s steps(3) infinite alternate}
+@keyframes halo-flick{from{opacity:.7}to{opacity:1}}
+/* velas: a chama troca de quadro, cada uma no seu ritmo */
+.flame{position:absolute;width:15px;height:21px;z-index:1;pointer-events:none;background:url(/assets/castelo/4543326f6ffb9b731d87e6ac3f13d8d3.png) 0 0/60px 21px;image-rendering:pixelated;animation:flame-flick .72s steps(1) infinite}
+.flame.roxa{background-image:url(/assets/castelo/0fa51aa2c8dd4221086d5e8591f47f9f.png)}
+@keyframes flame-flick{0%{background-position:0 0}22%{background-position:-30px 0}47%{background-position:-15px 0}70%{background-position:-45px 0}84%{background-position:-30px 0}}
+.mote{position:absolute;width:3px;height:3px;z-index:2;pointer-events:none;opacity:0;animation:mote-rise 8s steps(12) infinite}
+@keyframes mote-rise{0%{opacity:0;transform:translate(0,0)}15%{opacity:.85}50%{transform:translate(12px,-54px)}85%{opacity:.6}100%{opacity:0;transform:translate(-6px,-111px)}}
+.fglint{position:absolute;z-index:2;width:9px;height:9px;pointer-events:none;background:linear-gradient(#fff6d0,#fff6d0) center/3px 9px no-repeat,linear-gradient(#fff6d0,#fff6d0) center/9px 3px no-repeat;opacity:0;animation:fglint 6s steps(1) infinite}
+@keyframes fglint{0%,90%{opacity:0}91%{opacity:.5}92.5%{opacity:1}94%{opacity:.5}95.5%,100%{opacity:0}}
+/* relógio: ponteiros andam em tiques, o mostrador pisca nas badaladas */
+.clock{position:absolute;left:1131px;top:177px;width:222px;height:222px;z-index:2;pointer-events:none;background:url(/assets/castelo/57a8a47fee74f09dda5fa092f0df7231.png) 0 0/3552px 222px;image-rendering:pixelated}
+.clock.run{animation:clock-run 1.4s steps(15) forwards}
+.clock.end{background-position:-3330px 0}
+@keyframes clock-run{to{background-position:-3330px 0}}
+.clock.ring{animation:clock-ring .5s steps(1) 4}
+@keyframes clock-ring{0%{filter:brightness(1.25)}50%{filter:brightness(1)}}
+.tick{position:absolute;left:96px;top:96px;width:4px;height:10px;margin:-5px 0 0 -2px;background:#1e1630}
+.hand{position:absolute;left:50%;bottom:50%;transform-origin:50% 100%;transition:transform 2.6s steps(52)}
+.hand.h{width:8px;height:52px;margin-left:-4px;background:#120c1c}
+.hand.m{width:5px;height:78px;margin-left:-2.5px;background:#1a1228}
+.pin{position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#a8843a;box-shadow:0 0 0 2px #1e1630}
+.bat{position:absolute;z-index:4;width:72px;height:48px;padding:0;border:0;cursor:pointer;background:url(/assets/castelo/d992aaf2ee8aa59affb97d55e3e0b1cf.png) 0 0/576px 48px;image-rendering:pixelated;animation:bat-flap .57s steps(8) infinite,bat-bob 2.2s steps(6) infinite alternate}
+.bat-tag{position:absolute;left:50%;top:54px;transform:translateX(-50%);white-space:nowrap;font:13px Silkscreen,monospace;color:#ffb0b8;background:rgba(44,10,18,.92);border:2px solid #c42032;padding:3px 6px}
+@keyframes bat-flap{to{background-position:-576px 0}}
+@keyframes bat-bob{to{transform:translateY(-21px)}}
+.quest-row{display:flex;align-items:center;gap:10px;font-size:19px}
+.check{width:18px;height:18px;flex:none;box-sizing:border-box;border:2px solid #8a5c14;background:#07060b}
+.check.on{background:#e8b038;border-color:#f6dc8c}
+.pframe{position:absolute;z-index:4;padding:0;border:0;background:none;cursor:pointer}
+.plaque{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;background:rgba(7,6,11,.9);border:2px solid #8a5c14;padding:6px 8px;box-sizing:border-box}
+.plaque.feat{border-color:#e8b038;box-shadow:0 0 0 2px #2c0a12}
+.glass{position:absolute;z-index:3;box-sizing:border-box;width:350px;padding:12px 16px 14px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(rgba(8,8,18,.9),rgba(8,8,18,.94));border:4px solid #050408;color:#d8cfbb;overflow:hidden;transition:filter .3s steps(2)}
+.glass.sel{animation:glass-in .36s steps(3) both}
+@keyframes glass-in{from{opacity:0;filter:brightness(2.2)}to{opacity:1;filter:none}}
+.glass.sel .chip{animation:chip-in .4s steps(4) both}
+.glass.sel .chip:nth-child(2){animation-delay:.07s}.glass.sel .chip:nth-child(3){animation-delay:.14s}.glass.sel .chip:nth-child(4){animation-delay:.21s}.glass.sel .chip:nth-child(5){animation-delay:.28s}.glass.sel .chip:nth-child(6){animation-delay:.35s}
+@keyframes chip-in{from{opacity:0;filter:brightness(3)}to{opacity:1;filter:none}}
+.rays.on-c{opacity:1;background:linear-gradient(rgba(62,200,212,.42),rgba(62,200,212,.05) 92%)}
+.rays.on-r{opacity:1;background:linear-gradient(rgba(214,48,66,.42),rgba(214,48,66,.05) 92%)}
+.rays.on-o{opacity:1;background:linear-gradient(rgba(232,176,56,.4),rgba(232,176,56,.05) 92%)}
+.rays.on-v{opacity:1;background:linear-gradient(rgba(150,96,210,.46),rgba(150,96,210,.05) 92%)}
+.rays.all{opacity:1;background:linear-gradient(90deg,rgba(62,200,212,.3),rgba(196,32,50,.26),rgba(232,176,56,.3),rgba(132,82,184,.28))}
+.rays.on-c,.rays.on-r,.rays.on-o,.rays.on-v{animation:ray-in .5s steps(5) both}
+@keyframes ray-in{from{opacity:0}to{opacity:1}}
+.win-glow{position:absolute;left:474px;top:24px;width:492px;height:546px;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:0}
+.win-glow.done{opacity:1;background:radial-gradient(ellipse at 50% 45%,rgba(246,220,140,.22),transparent 64%);animation:win-pulse 1.8s steps(3) infinite alternate}
+.win-glow.on-c{opacity:1;background:radial-gradient(ellipse at 50% 70%,rgba(62,200,212,.42),transparent 52%)}
+.win-glow.on-r{opacity:1;background:radial-gradient(ellipse at 17% 60%,rgba(214,48,66,.42),transparent 50%)}
+.win-glow.on-o{opacity:1;background:radial-gradient(ellipse at 83% 60%,rgba(232,176,56,.42),transparent 50%)}
+.win-glow.on-v{opacity:1;background:radial-gradient(ellipse at 50% 20%,rgba(150,96,210,.46),transparent 48%)}
+@keyframes win-pulse{from{filter:brightness(.85)}to{filter:brightness(1.2)}}
+.pane{position:absolute;z-index:4;padding:0;border:0;cursor:pointer;background:rgba(4,3,14,.64);transition:background .3s steps(3)}
+.pane-v{left:618px;top:39px;width:207px;height:201px;clip-path:polygon(81px 0px,81px 3px,69px 3px,69px 6px,63px 6px,63px 9px,57px 9px,57px 12px,51px 12px,51px 15px,45px 15px,45px 18px,42px 18px,42px 21px,39px 21px,39px 24px,33px 24px,33px 27px,30px 27px,30px 30px,27px 30px,27px 36px,24px 36px,24px 39px,21px 39px,21px 42px,18px 42px,18px 48px,15px 48px,15px 51px,12px 51px,12px 57px,9px 57px,9px 66px,6px 66px,6px 75px,3px 75px,3px 90px,0px 90px,0px 111px,3px 111px,3px 126px,6px 126px,6px 135px,9px 135px,9px 144px,12px 144px,12px 150px,15px 150px,15px 153px,18px 153px,18px 159px,21px 159px,21px 162px,24px 162px,24px 165px,27px 165px,27px 171px,30px 171px,30px 174px,33px 174px,33px 177px,39px 177px,39px 180px,42px 180px,42px 183px,45px 183px,45px 186px,51px 186px,51px 189px,57px 189px,57px 192px,63px 192px,63px 195px,69px 195px,69px 198px,81px 198px,81px 201px,126px 198px,126px 201px,138px 195px,138px 198px,144px 192px,144px 195px,150px 189px,150px 192px,156px 186px,156px 189px,162px 183px,162px 186px,165px 180px,165px 183px,168px 177px,168px 180px,174px 174px,174px 177px,177px 171px,177px 174px,180px 168px,180px 168px,183px 162px,183px 165px,186px 159px,186px 162px,189px 156px,189px 156px,192px 150px,192px 153px,195px 147px,195px 147px,198px 141px,198px 138px,201px 132px,201px 129px,204px 123px,204px 114px,207px 108px,207px 93px,204px 87px,204px 78px,201px 72px,201px 69px,198px 63px,198px 60px,195px 54px,195px 54px,192px 48px,192px 51px,189px 45px,189px 45px,186px 39px,186px 42px,183px 36px,183px 39px,180px 33px,180px 33px,177px 27px,177px 30px,174px 24px,174px 27px,168px 21px,168px 24px,165px 18px,165px 21px,162px 15px,162px 18px,156px 12px,156px 15px,150px 9px,150px 12px,144px 6px,144px 9px,138px 3px,138px 6px,126px 0px,126px 3px)}
+.pane-c{left:615px;top:252px;width:216px;height:270px;clip-path:polygon(90px 0px,90px 3px,78px 3px,78px 6px,72px 6px,72px 9px,66px 9px,66px 12px,60px 12px,60px 15px,57px 15px,57px 18px,51px 18px,51px 21px,48px 21px,48px 24px,45px 24px,45px 27px,42px 27px,42px 30px,39px 30px,39px 33px,36px 33px,36px 36px,33px 36px,33px 39px,30px 39px,30px 45px,27px 45px,27px 48px,24px 48px,24px 54px,21px 54px,21px 60px,18px 60px,18px 66px,15px 66px,15px 72px,12px 72px,12px 78px,9px 78px,9px 90px,6px 90px,6px 102px,3px 102px,3px 123px,0px 123px,0px 144px,3px 144px,3px 168px,6px 168px,6px 180px,9px 180px,9px 189px,12px 189px,12px 198px,15px 198px,15px 204px,18px 204px,18px 210px,21px 210px,21px 216px,24px 216px,24px 219px,27px 219px,27px 225px,30px 225px,30px 228px,33px 228px,33px 231px,36px 231px,36px 237px,39px 237px,39px 240px,42px 240px,42px 243px,45px 243px,45px 246px,51px 246px,51px 249px,54px 249px,54px 252px,57px 252px,57px 255px,63px 255px,63px 258px,69px 258px,69px 261px,75px 261px,75px 264px,84px 264px,84px 267px,96px 267px,96px 270px,120px 267px,120px 270px,132px 264px,132px 267px,141px 261px,141px 264px,147px 258px,147px 261px,153px 255px,153px 258px,159px 252px,159px 255px,162px 249px,162px 252px,165px 246px,165px 249px,171px 243px,171px 246px,174px 240px,174px 243px,177px 237px,177px 240px,180px 234px,180px 234px,183px 228px,183px 231px,186px 225px,186px 228px,189px 222px,189px 222px,192px 216px,192px 219px,195px 213px,195px 213px,198px 207px,198px 207px,201px 201px,201px 201px,204px 195px,204px 192px,207px 186px,207px 183px,210px 177px,210px 171px,213px 165px,213px 147px,216px 141px,216px 126px,213px 120px,213px 105px,210px 99px,210px 93px,207px 87px,207px 81px,204px 75px,204px 75px,201px 69px,201px 69px,198px 63px,198px 63px,195px 57px,195px 57px,192px 51px,192px 51px,189px 45px,189px 48px,186px 42px,186px 42px,183px 36px,183px 39px,180px 33px,180px 36px,177px 30px,177px 33px,174px 27px,174px 30px,171px 24px,171px 27px,168px 21px,168px 24px,165px 18px,165px 21px,159px 15px,159px 18px,156px 12px,156px 15px,150px 9px,150px 12px,144px 6px,144px 9px,138px 3px,138px 6px,126px 0px,126px 3px)}
+.pane-r{left:537px;top:108px;width:90px;height:429px;clip-path:polygon(45px 0px,45px 9px,39px 9px,39px 12px,48px 12px,48px 15px,45px 15px,45px 18px,42px 18px,42px 21px,39px 21px,39px 27px,42px 27px,42px 30px,39px 30px,39px 33px,42px 33px,42px 42px,45px 42px,45px 51px,48px 51px,48px 60px,51px 60px,51px 69px,54px 69px,54px 102px,51px 102px,51px 114px,48px 114px,48px 123px,45px 123px,45px 132px,42px 132px,42px 141px,39px 141px,39px 144px,36px 144px,36px 150px,33px 150px,33px 156px,30px 156px,30px 159px,27px 159px,27px 165px,24px 165px,24px 171px,21px 171px,21px 177px,18px 177px,18px 183px,15px 183px,15px 189px,12px 189px,12px 195px,9px 195px,9px 201px,6px 201px,6px 216px,3px 216px,3px 222px,0px 222px,0px 252px,3px 252px,3px 264px,6px 264px,6px 273px,9px 273px,9px 279px,12px 279px,12px 288px,15px 288px,15px 291px,18px 291px,18px 297px,21px 297px,21px 303px,24px 303px,24px 309px,27px 309px,27px 315px,30px 315px,30px 318px,33px 318px,33px 324px,36px 324px,36px 330px,39px 330px,39px 336px,42px 336px,42px 342px,45px 342px,45px 351px,48px 351px,48px 360px,51px 360px,51px 372px,54px 372px,54px 402px,51px 402px,51px 414px,48px 414px,48px 426px,51px 426px,51px 429px,81px 426px,81px 429px,84px 423px,84px 420px,87px 414px,87px 408px,90px 402px,90px 375px,87px 369px,87px 363px,84px 357px,84px 354px,81px 348px,81px 348px,78px 342px,78px 342px,75px 336px,75px 336px,72px 330px,72px 330px,69px 324px,69px 327px,66px 321px,66px 318px,63px 312px,63px 312px,60px 306px,60px 309px,57px 303px,57px 303px,54px 297px,54px 297px,51px 291px,51px 291px,48px 285px,48px 285px,45px 279px,45px 276px,42px 270px,42px 267px,39px 261px,39px 255px,36px 249px,36px 228px,39px 222px,39px 216px,42px 210px,42px 207px,45px 201px,45px 198px,48px 192px,48px 192px,51px 186px,51px 186px,48px 180px,48px 183px,51px 177px,51px 180px,57px 174px,57px 174px,60px 168px,60px 171px,63px 165px,63px 165px,66px 159px,66px 159px,69px 153px,69px 153px,72px 147px,72px 144px,75px 138px,75px 141px,78px 135px,78px 135px,81px 129px,81px 129px,84px 123px,84px 120px,87px 114px,87px 108px,90px 102px,90px 84px,87px 78px,87px 78px,84px 72px,84px 72px,81px 66px,81px 60px,78px 54px,78px 42px,75px 36px,75px 36px,72px 30px,72px 30px,69px 24px,69px 24px,66px 18px,66px 18px,63px 12px,63px 15px,54px 9px,54px 12px,57px 6px,57px 9px,54px 3px,54px 3px)}
+.pane-o{left:813px;top:105px;width:90px;height:432px;clip-path:polygon(45px 0px,45px 9px,36px 9px,36px 12px,27px 12px,27px 18px,24px 18px,24px 24px,21px 24px,21px 30px,18px 30px,18px 36px,15px 36px,15px 42px,12px 42px,12px 60px,9px 60px,9px 72px,6px 72px,6px 78px,3px 78px,3px 84px,0px 84px,0px 105px,3px 105px,3px 117px,6px 117px,6px 126px,9px 126px,9px 132px,12px 132px,12px 138px,15px 138px,15px 144px,18px 144px,18px 150px,21px 150px,21px 156px,24px 156px,24px 162px,27px 162px,27px 168px,30px 168px,30px 171px,33px 171px,33px 177px,36px 177px,36px 180px,39px 180px,39px 189px,42px 189px,42px 195px,45px 195px,45px 204px,48px 204px,48px 213px,51px 213px,51px 225px,54px 225px,54px 255px,51px 255px,51px 267px,48px 267px,48px 276px,45px 276px,45px 285px,48px 285px,48px 288px,45px 288px,45px 291px,39px 291px,39px 297px,36px 297px,36px 303px,33px 303px,33px 309px,30px 309px,30px 312px,27px 312px,27px 318px,24px 318px,24px 327px,21px 327px,21px 330px,18px 330px,18px 336px,15px 336px,15px 342px,12px 342px,12px 348px,9px 348px,9px 354px,6px 354px,6px 363px,3px 363px,3px 375px,0px 375px,0px 405px,3px 405px,3px 417px,6px 417px,6px 429px,9px 429px,9px 432px,39px 429px,39px 432px,42px 426px,42px 420px,24px 414px,24px 417px,39px 411px,39px 408px,36px 402px,36px 381px,39px 375px,39px 378px,27px 372px,27px 375px,39px 369px,39px 369px,42px 363px,42px 360px,45px 354px,45px 351px,48px 345px,48px 345px,51px 339px,51px 339px,54px 333px,54px 330px,57px 324px,57px 327px,60px 321px,60px 324px,63px 318px,63px 318px,66px 312px,66px 312px,69px 306px,69px 306px,72px 300px,72px 300px,75px 294px,75px 294px,78px 288px,78px 288px,81px 282px,81px 282px,84px 276px,84px 273px,87px 267px,87px 261px,84px 255px,84px 258px,90px 252px,90px 228px,87px 222px,87px 222px,84px 216px,84px 207px,81px 201px,81px 201px,78px 195px,78px 195px,75px 189px,75px 189px,72px 183px,72px 183px,69px 177px,69px 177px,66px 171px,66px 171px,63px 165px,63px 165px,60px 159px,60px 162px,57px 156px,57px 156px,54px 150px,54px 147px,48px 141px,48px 138px,45px 132px,45px 129px,42px 123px,42px 120px,39px 114px,39px 108px,36px 102px,36px 81px,39px 75px,39px 69px,42px 63px,42px 60px,45px 54px,45px 51px,48px 45px,48px 39px,54px 33px,54px 33px,51px 27px,51px 27px,48px 21px,48px 24px,45px 18px,45px 21px,42px 15px,42px 15px,54px 9px,54px 12px,57px 6px,57px 3px)}
+.pane .spark{right:auto;top:50%;left:50%;margin:-16px 0 0 -16px}
+.pane-r .spark{left:21px;top:207px}
+.pane-o .spark{left:63px;top:210px}
+.pane.on{background:transparent}
+.pane::after{content:'';position:absolute;inset:0;opacity:0;mix-blend-mode:screen;pointer-events:none}
+.pane.on::after{opacity:.55;animation:pane-lit .6s steps(3) both}
+.pane.sel::after{opacity:.85;animation:pane-lit .6s steps(3) both,pane-pulse 1.6s steps(2) .6s infinite alternate}
+.pane-v::after{background:radial-gradient(circle,rgba(200,160,255,.75),rgba(150,96,210,.25) 60%,transparent 72%)}
+.pane-c::after{background:radial-gradient(ellipse,rgba(160,240,255,.75),rgba(62,200,212,.25) 60%,transparent 72%)}
+.pane-r::after{background:linear-gradient(rgba(255,110,120,.55),rgba(214,48,66,.3))}
+.pane-o::after{background:linear-gradient(rgba(255,200,110,.55),rgba(232,150,56,.3))}
+.pane .spark{right:auto;left:50%;top:50%;margin:-16px 0 0 -16px}
+.pane.on .spark{display:none}
+.pane:focus-visible{background:rgba(62,200,212,.28)}
+.ptag{position:absolute;z-index:5;display:none;transform:translate(-50%,-50%);white-space:nowrap;font:13px Silkscreen,monospace;letter-spacing:.04em;color:#f6dc8c;background:rgba(7,6,11,.9);border:2px solid #8a5c14;padding:4px 8px;pointer-events:none}
+.pane:hover + .ptag,.pane:focus-visible + .ptag{display:block}
+@keyframes pane-lit{from{opacity:0;filter:brightness(2.4)}}
+@keyframes pane-pulse{to{filter:brightness(1.3)}}
+.rays.on-v{left:560px;top:60px;width:320px;height:700px;clip-path:polygon(38% 0,62% 0,100% 100%,0 100%)}
+.rays.on-c{left:520px;top:300px;width:400px;height:460px;clip-path:polygon(35% 0,65% 0,100% 100%,0 100%)}
+.rays.on-r{left:380px;top:140px;width:360px;height:620px;clip-path:polygon(42% 0,58% 0,100% 100%,0 100%)}
+.rays.on-o{left:700px;top:140px;width:360px;height:620px;clip-path:polygon(42% 0,58% 0,100% 100%,0 100%)}
+@keyframes pane-idle{to{filter:brightness(.85) saturate(.9)}}
+.vt-progress{position:absolute;right:20px;bottom:18px;z-index:7;display:flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(7,6,11,.88);border:2px solid #8a5c14;font:13px Silkscreen,monospace;color:#ece2cc}
+.vt-dot{width:12px;height:12px;background:#2a2434;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.vt-dot.on.vt-c{background:#3ec8d4}.vt-dot.on.vt-r{background:#d63042}.vt-dot.on.vt-o{background:#e8b038}.vt-dot.on.vt-v{background:#9660d2}
+.glass::before{content:'';position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;opacity:.09;pointer-events:none;background:repeating-conic-gradient(var(--gc) 0deg 12deg,transparent 12deg 15deg,#ffffff 15deg 17deg,transparent 17deg 30deg)}
+.glass > *{position:relative}
+.glass-c{--gc:#3ec8d4;box-shadow:inset 0 0 0 2px #3ec8d4,0 0 26px rgba(62,200,212,.28)}
+.glass-r{--gc:#c42032;box-shadow:inset 0 0 0 2px #c42032,0 0 26px rgba(196,32,50,.3)}
+.glass-o{--gc:#e8b038;box-shadow:inset 0 0 0 2px #e8b038,0 0 26px rgba(232,176,56,.25)}
+.glass-v{--gc:#8452b8;box-shadow:inset 0 0 0 2px #8452b8,0 0 26px rgba(132,82,184,.3)}
+.glass h3{margin:0;font:600 20px 'Pixelify Sans',Silkscreen,monospace;color:#ffffff}
+.mini-v{position:absolute;right:14px;top:12px;width:34px;height:46px;box-sizing:border-box;border:3px solid #050408;border-radius:17px 17px 2px 2px;box-shadow:0 0 0 1px #8a5c14,0 0 10px var(--gc);background:repeating-conic-gradient(from 0deg at 50% 62%,var(--gc) 0deg 40deg,#050408 40deg 46deg,#f6dc8c 46deg 64deg,#050408 64deg 70deg)}
+.mini-v::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:#050408}
+.tflame{position:absolute;z-index:6;width:36px;height:60px;pointer-events:none;background:url(/assets/castelo/1fe03dac6184541e32b396747126f7fd.png) 0 0/216px 60px;image-rendering:pixelated;animation:tflame-a .5s steps(6) infinite,tflame-rise .9s steps(6) infinite}
+@keyframes tflame-a{to{background-position:-216px 0}}
+@keyframes tflame-rise{from{transform:translateY(0);opacity:1}to{transform:translateY(-72px);opacity:0}}
+.pad{position:absolute;left:1126px;top:704px;width:288px;height:96px;z-index:2;padding:0;border:0;cursor:pointer;background:url(/assets/castelo/740c749f3384137857192f9d7c22fa69.png) 0 0/2304px 96px;image-rendering:pixelated;animation:pad-spin 1.6s steps(8) infinite}
+.pad.charge{animation-duration:.4s;filter:brightness(1.5)}
+.sigil-burst{position:absolute;left:1126px;top:704px;width:288px;height:96px;z-index:2;pointer-events:none;background:url(/assets/castelo/efff2c083a3f47f8fabba434aea5794b.png) 0 0/1728px 96px;image-rendering:pixelated;animation:sigil-burst .5s steps(6) infinite}
+@keyframes sigil-burst{to{background-position:-1728px 0}}
+@keyframes pad-spin{to{background-position:-2304px 0}}
+.beam{position:absolute;top:0;width:96px;margin-left:-48px;z-index:6;pointer-events:none;background:linear-gradient(90deg,transparent 0 12%,rgba(62,200,212,.35) 12% 30%,rgba(168,240,248,.75) 30% 42%,#e8fcff 42% 58%,rgba(168,240,248,.75) 58% 70%,rgba(62,200,212,.35) 70% 88%,transparent 88%);animation:beam-in .4s steps(8) both,beam-flick .24s steps(2) .4s infinite}
+@keyframes beam-in{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes beam-flick{50%{opacity:.7}}
+.dlg{position:absolute;left:0;top:0;width:1440px;z-index:8;box-sizing:border-box;border-style:solid;border-width:10px;border-image:url(/assets/castelo/e8f2213b7b846e38b31ee5d4cd69c747.png) 5 / 10px stretch;background:linear-gradient(rgba(14,22,56,.97),rgba(6,10,32,.97));padding:14px 40px 20px;image-rendering:pixelated;display:flex;gap:32px;align-items:flex-start}
+.x-btn{flex:none;align-self:flex-start;width:auto;min-height:40px;padding:0 12px;white-space:nowrap;border:2px solid #3ec8d4;background:#06101a;color:#d4fff6;font:13px Silkscreen,monospace;cursor:pointer}
+.skip-layer{position:absolute;inset:0;z-index:7;border:0;padding:0;background:transparent;cursor:pointer}
+.skip-hint{position:absolute;right:16px;bottom:16px;z-index:7;pointer-events:none;white-space:nowrap;font:13px/1.2 'Pixelify Sans',Silkscreen,monospace;color:#cfc5ad;background:rgba(7,6,11,.75);border:1px solid #5a4a30;padding:2px 8px}
+.fade{position:absolute;inset:0;z-index:9;background:#000000;opacity:0;pointer-events:none;transition:opacity .24s steps(3)}
+.fade.on{opacity:1}
+.flash{position:absolute;inset:0;z-index:20;pointer-events:none;background:#f4f0e6;opacity:0;transition:opacity .24s steps(3)}
+.flash.on{opacity:1}
+/* transição em íris: o círculo fecha em degraus sobre o quadro */
+.iris{position:absolute;z-index:19;border-radius:50%;pointer-events:none;box-shadow:0 0 0 4000px #000000;transform:translate(-50%,-50%)}
+.iris.close{animation:iris-close .6s steps(10) forwards}
+.iris.open{animation:iris-open .6s steps(10) forwards}
+@keyframes iris-close{from{width:3000px;height:3000px}to{width:0;height:0}}
+@keyframes iris-open{from{width:0;height:0}to{width:3000px;height:3000px}}
+/* TV de tubo ligando: ponto, linha, tela */
+.crt{position:absolute;inset:0;z-index:40;background:#000000;pointer-events:none;animation:crt-bg 1.5s steps(1) forwards}
+.crt::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px,rgba(0,0,0,.4) 2px 3px)}
+.crt-beam{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#f4f0e6;box-shadow:0 0 24px #d4fff6;animation:crt-beam 1.5s steps(1) forwards}
+@keyframes crt-bg{0%,62%{background:#000000}72%{background:rgba(0,0,0,.7)}82%{background:rgba(0,0,0,.35)}100%{background:rgba(0,0,0,0)}}
+@keyframes crt-beam{0%{width:0;height:0}6%{width:6px;height:6px}12%{width:120px;height:3px}18%{width:520px;height:3px}24%{width:1100px;height:3px}30%{width:1440px;height:3px}38%{width:1440px;height:60px}46%{width:1440px;height:240px}54%{width:1440px;height:520px}62%{width:1440px;height:810px;opacity:1}72%{opacity:.7}82%{opacity:.35}100%{width:1440px;height:810px;opacity:0}}
+.inp{width:100%;box-sizing:border-box;border-style:solid;border-width:10px;border-image:url(/assets/castelo/e8f2213b7b846e38b31ee5d4cd69c747.png) 5 / 10px stretch;background:linear-gradient(#0e1638,#060a20);font:16px/1.3 'Pixelify Sans',Silkscreen,monospace;color:#ece6d4;padding:2px 8px;image-rendering:pixelated}
+.f-row{display:flex;gap:12px}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.f-lbl{font:13px Silkscreen,monospace;letter-spacing:.08em;color:#f6dc8c;text-transform:uppercase}
+.f-inp{box-sizing:border-box;width:100%;padding:10px 12px;background:#0a0710;border:3px solid #5a3a14;box-shadow:inset 0 3px 0 #000000;color:#ece6d4;font:17px/1.3 'Pixelify Sans',Silkscreen,monospace;resize:vertical}
+.f-inp::placeholder{color:#6e6458}
+.f-inp:focus{border-color:#3ec8d4}
+.f-inp:focus-visible{outline:2px solid #3ec8d4;outline-offset:2px}
+.f-inp[aria-invalid="true"]{border-color:#c42032}
+.link-btn{min-height:44px;padding:0 8px;background:none;border:0;font:13px Silkscreen,monospace;letter-spacing:.04em;color:#cbb98f;cursor:pointer}
+.link-btn:focus-visible{outline:2px solid #3ec8d4;outline-offset:2px}
+.f-err{font:14px/1.3 'Pixelify Sans',Silkscreen,monospace;color:#ffb0a8}
+.bar{position:relative;height:42px;box-sizing:border-box;border-style:solid;border-width:21px 30px;border-image:url(/assets/castelo/f8564b82260d866347e635f114f9bf3b.png) 7 10 / 21px 30px stretch;image-rendering:pixelated}
+.fill{position:absolute;left:-21px;top:-12px;height:24px;background:url(/assets/castelo/792fe77c67c191a4f83f51a644d7bb18.png) 0 0/12px 24px;image-rendering:pixelated}
+.fill-o{background-image:url(/assets/castelo/acc0de858a4510aafc768481cf2a1f5b.png)}
+.fill-r{background-image:url(/assets/castelo/b846d3121ddd0404a5947507322f0059.png)}
+.portal{position:absolute;left:140px;top:150px;width:330px;height:250px;z-index:2;box-sizing:border-box;border-style:solid;border-width:16px;border-image:url(/assets/castelo/6c131f06bc528119262369a4f88f5387.png) 8 / 16px round;overflow:hidden;background:#000;image-rendering:pixelated}
+.portal::after{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(212,255,246,.55),rgba(62,200,212,.25) 40%,transparent 70%);animation:portal-pulse 1.6s steps(3) infinite alternate}
+@keyframes portal-pulse{from{opacity:.35}to{opacity:.9}}
+.paused *,.paused *::before,.paused *::after{animation-play-state:paused !important}
+@media (hover: hover){
+a:hover{color:#ffffff}
+.cell:hover{border-color:#e8b038;color:#ffffff}
+.btn:hover{border-image-source:url(/assets/castelo/29c6382b1b3d558bdfb50ac9e935f982.png);color:#ffffff}
+.btn-p:hover{border-image-source:url(/assets/castelo/1d131dd99c3d5787fae8259dd81c1845.png);filter:brightness(1.15);color:#ffffff}
+.spot:hover{border-color:#3ec8d4}
+.bat:hover{filter:brightness(1.4)}
+.pframe:hover{box-shadow:0 0 0 4px #3ec8d4}
+.pad:hover{filter:brightness(1.4)}
+.link-btn:hover{color:#ffffff}
+.pane:not(.on):hover{background:rgba(4,3,14,.4)}
+.channel:hover{border-color:#3ec8d4}
+.channel:hover .ch-go{color:#ffffff}
+.icon-btn:hover{border-image-source:url(/assets/castelo/29c6382b1b3d558bdfb50ac9e935f982.png)}
+}
+@media (prefers-reduced-motion: reduce){
+.gate,.tflame,.pane::after,.win-glow,.rays,.glass .chip,.door,.door-glow,.sigil-burst,.clock.run,.book-sheet,.hero.walking,.relic,.spark,.bat,.pad,.beam,.portal::after,.glow,.twinkle,.amb-bat,.status i,.ch-main,.quill,.glint,.book-glint,.fireball,.sketch path,.rain,.lightning,.storm-flash,.clouds span,.clight,.lamp-flick,.flame,.mote,.fglint,.moon-glow,.moon-glint,.mini-bat,.halo,.hero.attack,.clock.ring{animation:none}
+.hero.dissolve{animation:none;visibility:hidden}
+.hero.materialize{animation:none}
+.hero.enter,.hero.exit{transition:none}
+.door.opening,.door.open{background-position:-225px 0}
+.door.closing{background-position:0 0}
+.clock.run{background-position:-3330px 0}
+.book-sheet{background-position:-288px 0}
+.hero.moving,.hand,.book,.fireball.fly,.quill{transition:none}
+.flash{background:#000000}
+.iris.close,.iris.open{animation:none}
+.iris.close{width:0;height:0}
+.iris.open{display:none}
+}

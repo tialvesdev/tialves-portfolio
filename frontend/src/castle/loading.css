@@ -1,0 +1,21 @@
+.ld-px,.ld-px img{image-rendering:pixelated}
+.ld-wall{background:linear-gradient(rgba(10,8,20,.35),rgba(10,8,20,.55)),url(/assets/castelo/d127c1ae22063648415d5b7a0b373dc9.png) 0 0/96px 96px;image-rendering:pixelated}
+.ld-floor{background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.35)),url(/assets/castelo/27026d2874d08f541658d4a80126e515.png) 0 0/96px 96px;image-rendering:pixelated}
+.ld-fr{box-sizing:border-box;border-style:solid;border-width:16px;border-image:url(/assets/castelo/1b7efee7399615f55bc753f7cc4ba47f.png) 8 / 16px round;image-rendering:pixelated}
+.ld-frg{box-sizing:border-box;border-style:solid;border-width:16px;border-image:url(/assets/castelo/6c131f06bc528119262369a4f88f5387.png) 8 / 16px round;image-rendering:pixelated}
+.ld-end{width:84px;height:36px;flex:none;background:url(/assets/castelo/cf1c063eb3f5591d01c02fb1c190a8e2.png) 0 0/84px 36px;image-rendering:pixelated}
+.ld-mid{flex:1;height:36px;background:url(/assets/castelo/5bd35b96bd2abc1fa2b6ea5ba2ce7d10.png) 0 0/24px 36px repeat-x;image-rendering:pixelated}
+.ld-emb{width:144px;height:81px;flex:none;background:url(/assets/castelo/b658f56d710eee94f3166b7dfeac9682.png) 0 0/144px 81px;image-rendering:pixelated}
+.ld-hero{position:absolute;width:96px;height:160px;background:url(/assets/castelo/d4116e62c613798d8bee992e485cb4c0.png) 0 0/576px 160px;image-rendering:pixelated;animation:ld-walk .6s steps(6) infinite}
+@keyframes ld-walk{to{background-position:-576px 0}}
+.ld-flame{position:absolute;width:36px;height:60px;background:url(/assets/castelo/3a7f93c6c7a16b3e72dafd6f02bb90ab.png) 0 0/216px 60px;image-rendering:pixelated;animation:ld-flame .5s steps(6) infinite}
+@keyframes ld-flame{to{background-position:-216px 0}}
+.ld-bar{position:relative;height:42px;box-sizing:border-box;border-style:solid;border-width:21px 30px;border-image:url(/assets/castelo/f8564b82260d866347e635f114f9bf3b.png) 7 10 / 21px 30px stretch;image-rendering:pixelated}
+.ld-fill{position:absolute;left:-21px;top:-12px;height:24px;width:0;background:url(/assets/castelo/792fe77c67c191a4f83f51a644d7bb18.png) 0 0/12px 24px;image-rendering:pixelated;animation:ld-load 2.3s steps(30) forwards}
+@keyframes ld-load{to{width:calc(100% + 42px)}}
+.ld-blink{animation:ld-blink 1s steps(2) infinite}
+@keyframes ld-blink{50%{opacity:.35}}
+.ld-skip{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 10px;box-sizing:border-box;border-style:solid;border-width:18px;border-image:url(/assets/castelo/e2c53bf1730516574a1d1e885f9a0b29.png) 6 fill / 18px stretch;font:13px/18px Silkscreen,monospace;letter-spacing:.04em;color:#f6dc8c;background:none;cursor:pointer;image-rendering:pixelated}
+.ld-skip:focus-visible{outline:2px solid #3ec8d4;outline-offset:3px}
+.ld-skip:hover{border-image-source:url(/assets/castelo/29c6382b1b3d558bdfb50ac9e935f982.png);color:#ffffff}
+@media (prefers-reduced-motion: reduce){.ld-hero,.ld-flame,.ld-blink{animation:none}.ld-fill{animation-duration:.01s}}

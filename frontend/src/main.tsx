@@ -1,11 +1,14 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import './ui/theme.css';
-import './showcase/showcase.css';
-import App from './App';
+
+// O portfólio é o castelo; o catálogo de componentes do kit fica em /kit.
+const isKit = window.location.pathname.replace(/\/+$/, '') === '/kit';
+const Page = isKit ? lazy(() => import('./KitPage')) : lazy(() => import('./castle/CastlePage'));
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <Suspense fallback={null}>
+      <Page />
+    </Suspense>
   </StrictMode>,
 );
