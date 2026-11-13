@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: portfolio-api
+  mvc:
+    problemdetails:
+      enabled: true
+  jackson:
+    default-property-inclusion: always
+
+portfolio:
+  cors:
+    # Origens do front-end. Em produção, troque pelo domínio do seu portfólio.
+    allowed-origins:
+      - http://localhost:5173
+      - http://127.0.0.1:5173
+  contact:
+    # Quantas mensagens manter em memória (substitua por banco/e-mail em produção).
+    max-stored: 200
