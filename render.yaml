@@ -1,0 +1,17 @@
+# Blueprint do Render: sobe a API (backend/) como serviço web gratuito com Docker.
+# As chaves secretas (RESEND_API_KEY) e o domínio do site (CORS_ALLOWED_ORIGINS) são preenchidos no painel.
+services:
+  - type: web
+    name: atelie-gotico-api
+    runtime: docker
+    plan: free
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/profile
+    envVars:
+      - key: RESEND_API_KEY
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: CONTACT_TO
+        value: tialves.dev@gmail.com
