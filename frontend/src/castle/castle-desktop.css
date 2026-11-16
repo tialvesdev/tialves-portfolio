@@ -261,11 +261,14 @@
 @keyframes iris-close{from{width:3000px;height:3000px}to{width:0;height:0}}
 @keyframes iris-open{from{width:0;height:0}to{width:3000px;height:3000px}}
 /* TV de tubo ligando: ponto, linha, tela */
-.crt{position:absolute;inset:0;z-index:40;background:#000000;pointer-events:none;animation:crt-bg 1.5s steps(1) forwards}
-.crt::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px,rgba(0,0,0,.4) 2px 3px)}
-.crt-beam{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#f4f0e6;box-shadow:0 0 24px #d4fff6;animation:crt-beam 1.5s steps(1) forwards}
-@keyframes crt-bg{0%,62%{background:#000000}72%{background:rgba(0,0,0,.7)}82%{background:rgba(0,0,0,.35)}100%{background:rgba(0,0,0,0)}}
-@keyframes crt-beam{0%{width:0;height:0}6%{width:6px;height:6px}12%{width:120px;height:3px}18%{width:520px;height:3px}24%{width:1100px;height:3px}30%{width:1440px;height:3px}38%{width:1440px;height:60px}46%{width:1440px;height:240px}54%{width:1440px;height:520px}62%{width:1440px;height:810px;opacity:1}72%{opacity:.7}82%{opacity:.35}100%{width:1440px;height:810px;opacity:0}}
+/* TV ligando: ponto de luz, linha que se abre na horizontal, tela que se abre na vertical e some.
+   Mais quadros por trecho (steps de 8 a 12) para ficar fluido sem perder o degrau do pixel. */
+.crt{position:fixed;inset:0;z-index:1000;background:#000000;pointer-events:none;animation:crt-bg 1.6s forwards}
+.crt::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(rgba(0,0,0,0) 0 2px,rgba(0,0,0,.4) 2px 3px);animation:crt-lines 1.6s forwards}
+.crt-beam{position:absolute;left:50%;top:50%;width:0;height:0;transform:translate(-50%,-50%);background:#f4f0e6;box-shadow:0 0 24px #d4fff6,0 0 64px rgba(212,255,246,.45);animation:crt-beam 1.6s forwards}
+@keyframes crt-bg{0%{background:#000000;animation-timing-function:steps(1,end)}62%{background:#000000;animation-timing-function:steps(8,end)}100%{background:rgba(0,0,0,0)}}
+@keyframes crt-lines{0%{opacity:1;animation-timing-function:steps(1,end)}62%{opacity:1;animation-timing-function:steps(8,end)}100%{opacity:0}}
+@keyframes crt-beam{0%{width:0;height:0;opacity:1;animation-timing-function:steps(4,end)}8%{width:10px;height:10px;animation-timing-function:steps(4,end)}14%{width:28px;height:3px;animation-timing-function:steps(10,end)}32%{width:100%;height:3px;animation-timing-function:steps(2,end)}36%{width:100%;height:5px;animation-timing-function:steps(12,end)}62%{width:100%;height:100%;opacity:1;animation-timing-function:steps(8,end)}100%{width:100%;height:100%;opacity:0}}
 .inp{width:100%;box-sizing:border-box;border-style:solid;border-width:10px;border-image:url(/assets/castelo/e8f2213b7b846e38b31ee5d4cd69c747.png) 5 / 10px stretch;background:linear-gradient(#0e1638,#060a20);font:16px/1.3 'Pixelify Sans',Silkscreen,monospace;color:#ece6d4;padding:2px 8px;image-rendering:pixelated}
 .f-row{display:flex;gap:12px}
 .field{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}

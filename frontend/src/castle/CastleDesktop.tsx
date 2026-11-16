@@ -33,6 +33,12 @@ export default class CastleDesktop extends Component<any, any> {
   }
 
   componentDidMount() {
+    // baixa e decodifica as salas de antemão: o fundo troca no instante em que o Tiago entra na sala
+    this.preloaded = [...this.rooms().map((r: any) => r.img), '/assets/castelo/2f27f4de6e0248b09dd6fca1050f22c2.png'].map((src: string) => {
+      const im = new Image(); im.decoding = 'async'; im.src = src;
+      if (im.decode) im.decode().catch(() => {});
+      return im;
+    });
     if (this.rootEl && typeof ResizeObserver !== 'undefined') {
       this.ro = new ResizeObserver((entries: any) => {
         const r = entries[0].contentRect;
@@ -44,7 +50,7 @@ export default class CastleDesktop extends Component<any, any> {
       this.ro.observe(this.rootEl);
     }
     if (this.rootEl && this.rootEl.focus) this.rootEl.focus({ preventScroll: true });
-    if (this.state.crt) this.crtTimer = setTimeout(() => this.setState({ crt: false }), 1550);
+    if (this.state.crt) this.crtTimer = setTimeout(() => this.setState({ crt: false }), 1700);
     this.onWinKey = (e: KeyboardEvent) => { const t = e.target as Node | null; if (t && this.rootEl && this.rootEl.contains(t)) return; this.vals().keydown(e); };
     window.addEventListener('keydown', this.onWinKey);
   }
@@ -828,7 +834,7 @@ export default class CastleDesktop extends Component<any, any> {
   render() {
     const v: any = this.vals();
     return (
-      <div ref={v.rootRef} role="region" aria-label="Castelo jogável: portfólio do Tiago. Role ou use as setas do teclado para andar; Esc fecha diálogos e pula animações; P pausa as animações." tabIndex={0} onKeyDown={v.keydown} style={sx(`position: relative; width: 100%; height: 100vh; overflow: ${v.rootOverflow}; background: #000000; display: flex; align-items: ${v.rootAlign}; justify-content: center`)}>
+      <div ref={v.rootRef} role="region" aria-label="Castelo jogável: portfólio do Tiago. Role ou use as setas do teclado para andar; Esc fecha diálogos e pula animações; P pausa as animações." tabIndex={0} onKeyDown={v.keydown} className="castle-root" style={sx(`position: relative; width: 100%; height: 100vh; overflow: ${v.rootOverflow}; background: #000000; display: flex; align-items: ${v.rootAlign}; justify-content: center`)}>
         {v.wide && (
           <>
             <div className={v.innerCls} style={sx(`position: relative; flex: none; width: 1440px; height: 810px; overflow: hidden; background: #000000; color: #d8cfbb; font-family: 'Pixelify Sans', Silkscreen, monospace; font-size: 17px; line-height: 1.45; transform: scale(${v.scale}); transform-origin: center center`)}>
@@ -1812,13 +1818,6 @@ export default class CastleDesktop extends Component<any, any> {
                 </>
               )}
               <div className={v.flashCls} />
-              {v.crt && (
-                <>
-                  <div className="crt" aria-hidden="true">
-                    <span className="crt-beam" />
-                  </div>
-                </>
-              )}
             </div>
           </>
         )}
@@ -1826,6 +1825,11 @@ export default class CastleDesktop extends Component<any, any> {
           <>
             <CastleMobile zoom={v.mbZoom} height={v.mbH} />
           </>
+        )}
+        {v.crt && (
+          <div className="crt" aria-hidden="true">
+            <span className="crt-beam" />
+          </div>
         )}
       </div>
     );

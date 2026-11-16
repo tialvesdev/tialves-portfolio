@@ -15,3 +15,16 @@ a {
   height: auto;
   bottom: 0;
 }
+
+/* a área do castelo recebe foco só para ouvir o teclado: sem contorno nem toque azul.
+   Os botões e links continuam com o contorno de foco ao navegar pelo teclado. */
+.castle-root,
+.mb-root {
+  -webkit-tap-highlight-color: transparent;
+}
+.castle-root.castle-root:focus,
+.castle-root.castle-root:focus-visible,
+.castle-root [tabindex='-1']:focus,
+.castle-root [tabindex='-1']:focus-visible {
+  outline: none;
+}
